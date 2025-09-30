@@ -1,167 +1,132 @@
 ---
 layout: page
-permalink: /
-title: Vision and Autonomy Intelligence Lab at UCLA
-description:
-
-highlighted_projects:
-  - teaser_video: /assets/video/pvp4real_highlight_video.mp4
-    teaser_img: 
-    caption: 
-    title: "PVP4Real: Mobile robots learned from human-in-the-loop interventions"
-    link: https://metadriverse.github.io/pvp4real/
-  - teaser_video: /assets/video/scenarionet_highlight_video.mp4
-    teaser_img: 
-    caption: 
-    title: "ScenarioNet: Open-source platform for large-scale traffic scenario modeling and simulation"
-    link: https://metadriverse.github.io/scenarionet/
+permalink: /publications/
+title: Publications
+nav: true
+nav_order: 4
+description: Complete list of publications from the Vision and Autonomy Intelligence Lab at UCLA.
 ---
 
 
+Click the buttons below to view our work by category.
+<!-- Custom Tag Filter Buttons -->
+<div class="publication-tags-container mb-4">
+  <div class="tag-buttons">
+    <button class="tag-btn active" data-tag="all">All</button>
+    <!-- For now, we'll add common research area tags manually -->
+    <button class="tag-btn" data-tag="Robotics">Robotics</button>
+    <button class="tag-btn" data-tag="Simulator">Simulator</button>
+    <button class="tag-btn" data-tag="Autonomous Driving">Autonomous Driving</button>
+    <button class="tag-btn" data-tag="Generative Model">Generative Model</button>
+        <button class="tag-btn" data-tag="Computer Vision">Computer Vision</button>
 
-<!-- ============================================ -->
-<div class="clearfix">
-Want to say something here?
-</div>
-<!-- ============================================ -->
-
-
-<!-- ============================================ -->
-<!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-<!-- Swiper Styles (Updated Style, No Background Change) -->
-<style>
-  .swiper {
-    width: 100%;
-    height: 500px;
-    margin-bottom: 2rem;
-  }
-
-  .swiper-slide {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #fff;
-    text-align: center;
-    font-size: 18px;
-  }
-
-    .swiper-button-next::after,
-    .swiper-button-prev::after {
-      color: var(--global-theme-color); /* Change this to any color you want */
-      font-size: 24px; /* Optional: tweak size */
-    }
-    
-    .swiper-pagination-bullet-active {
-      background: var(--global-theme-color); /* Color of the currently active bullet */
-    }
-
-  .swiper-slide video,
-  .swiper-slide img {
-    width: 100%;
-    height: 100%;
-    max-height: 400px;
-    object-fit: cover;
-    border-radius: 12px;
-
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* subtle soft shadow */
-    overflow: hidden;    /* to prevent shadow from being clipped */
-  }
-
-  .slide-title {
-    margin-top: 0.5rem;
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
-</style>
-
-<!-- Swiper Markup -->
-<div class="swiper mySwiper">
-  <div class="swiper-wrapper">
-    {% for item in page.highlighted_projects %}
-      <div class="swiper-slide">
-        {% if item.link %}
-          <a href="{{ item.link | relative_url }}" style="text-decoration: none; color: inherit;">
-        {% endif %}
-
-        {% if item.teaser_video %}
-          <video
-            src="{{ item.teaser_video | relative_url }}"
-            autoplay
-            muted
-            loop
-            playsinline
-            poster="{{ item.teaser_img | relative_url }}"
-          ></video>
-        {% elsif item.teaser_img %}
-          <img src="{{ item.teaser_img | relative_url }}" alt="{{ item.title }}" />
-        {% endif %}
-
-        {% if item.title %}
-          <div class="slide-title">{{ item.title }}</div>
-        {% endif %}
-
-        {% if item.link %}
-          </a>
-        {% endif %}
-      </div>
-    {% endfor %}
   </div>
-
-  <!-- Swiper UI -->
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-pagination"></div>
 </div>
-
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<!-- Swiper Initialization -->
-<script>
-  var swiper = new Swiper(".mySwiper", {
-    spaceBetween: 30,
-    centeredSlides: true,
-    loop: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
-</script>
-<!-- ============================================ -->
-
-
-
-
-
-<!-- ============================================ -->
-<!-- News -->
-<h2>
-News
-</h2>
-{% include news.liquid limit=true %}
-<!-- ============================================ -->
-
-
-<!-- _pages/publications.md -->
-
-<!-- Bibsearch Feature -->
-
-<!-- {% include bib_search.liquid %} -->
 
 <div class="publications">
 
 {% bibliography %}
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tagButtons = document.querySelectorAll('.tag-btn');
+  const publications = document.querySelectorAll('.publications ol.bibliography li');
+
+  tagButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Remove active class from all buttons
+      tagButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      this.classList.add('active');
+      
+      const selectedTag = this.getAttribute('data-tag');
+      
+      publications.forEach(publication => {
+        const publicationDiv = publication.querySelector('div[data-tags]');
+        
+        if (selectedTag === 'all') {
+          publication.style.display = 'block';
+        } else if (publicationDiv) {
+          const tags = publicationDiv.getAttribute('data-tags') || '';
+          const abbr = publicationDiv.getAttribute('data-abbr') || '';
+          
+          // Check if publication has the selected tag in its tags field or abbr field
+          const hasTag = tags.toLowerCase().includes(selectedTag.toLowerCase()) ||
+                        abbr.toLowerCase().includes(selectedTag.toLowerCase());
+          
+          if (hasTag) {
+            publication.style.display = 'block';
+          } else {
+            publication.style.display = 'none';
+          }
+        } else {
+          publication.style.display = 'none';
+        }
+      });
+      
+      // Hide empty year sections
+      hideEmptyYearSections();
+    });
+  });
+  
+  // Initialize year sections visibility on page load
+  hideEmptyYearSections();
+  
+  function hideEmptyYearSections() {
+    // Try different possible selectors for year headers
+    const yearSections = document.querySelectorAll('.publications h2, .publications h3, .publications .year');
+    
+    // Debug: log what we found
+    console.log('Found year sections:', yearSections.length);
+    
+    yearSections.forEach(yearSection => {
+      // Check if this looks like a year header (contains 4 digits)
+      const yearText = yearSection.textContent.trim();
+      const isYearHeader = /\b(19|20)\d{2}\b/.test(yearText);
+      
+      console.log('Checking element:', yearText, 'isYearHeader:', isYearHeader);
+      
+      if (!isYearHeader) return; // Skip if not a year header
+      
+      let nextElement = yearSection.nextElementSibling;
+      let hasVisiblePublications = false;
+      
+      // Check all publications under this year until we hit the next year section or end
+      while (nextElement) {
+        // If we hit another year header, stop
+        if ((nextElement.tagName === 'H2' || nextElement.tagName === 'H3') && 
+            /\b(19|20)\d{2}\b/.test(nextElement.textContent)) {
+          break;
+        }
+        
+        // Check if this is a publication list
+        if (nextElement.tagName === 'OL' && nextElement.classList.contains('bibliography')) {
+          const publications = nextElement.querySelectorAll('li');
+          let visibleCount = 0;
+          publications.forEach(pub => {
+            if (pub.style.display !== 'none') {
+              hasVisiblePublications = true;
+              visibleCount++;
+            }
+          });
+          console.log('Year', yearText, 'has', visibleCount, 'visible publications out of', publications.length);
+          break;
+        }
+        
+        nextElement = nextElement.nextElementSibling;
+      }
+      
+      // Hide/show year section based on whether it has visible publications
+      if (hasVisiblePublications) {
+        yearSection.style.display = 'block';
+        console.log('Showing year:', yearText);
+      } else {
+        yearSection.style.display = 'none';
+        console.log('Hiding year:', yearText);
+      }
+    });
+  }
+});
+</script>

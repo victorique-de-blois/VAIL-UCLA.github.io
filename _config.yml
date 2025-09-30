@@ -55,7 +55,7 @@ posts_in_search: true
 bib_search: true
 
 # Dimensions
-max_width: 800px
+max_width: 900px
 
 # TODO: add layout settings (single page vs. multi-page)
 
@@ -313,6 +313,7 @@ filtered_bibtex_keywords:
     selected,
     slides,
     supp,
+    tags,
     video,
     website,
   ]

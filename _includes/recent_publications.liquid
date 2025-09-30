@@ -1,0 +1,13 @@
+<!-- Recent Publications Component -->
+<hr>
+<h2>
+Recent Publications
+</h2>
+
+<div class="publications">
+  {% comment %}
+  Display the 15 most recent publications
+  Override global grouping settings for this specific bibliography
+  {% endcomment %}
+  {% bibliography --group_by none --group_order none --max 15 %}
+</div>

@@ -694,6 +694,37 @@ footer.sticky-bottom {
 
 // Publications
 
+.publication-tags-container {
+  .tag-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tag-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--global-theme-color);
+    background-color: transparent;
+    color: var(--global-theme-color);
+    border-radius: 1.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: var(--global-theme-color);
+      color: var(--global-bg-color);
+    }
+    
+    &.active {
+      background-color: var(--global-theme-color);
+      color: var(--global-bg-color);
+    }
+  }
+}
+
 .publications {
   margin-top: 2rem;
 
@@ -729,8 +760,6 @@ footer.sticky-bottom {
     li {
       margin-bottom: 1rem;
 
-      .preview {
-      }
 
       .abbr {
         min-height: 150px;
@@ -1464,21 +1493,24 @@ figure.cover {
 /* For PCs: when the viewport is at least 768px wide but below 1200px */
 @media (min-width: 768px) and (max-width: 999px) {
   .responsive-scrollable {
-    max-height: 30vw;
+    max-height: 200px;
+    overflow-y: auto;
   }
 }
 
 /* For larger screens: when the viewport is at least 1200px wide */
 @media (min-width: 1000px) {
   .responsive-scrollable {
-    max-height: 300px; /* Fixed max-height */
+    max-height: 200px; /* Fixed max-height */
+    overflow-y: auto;
   }
 }
 
 /* For phones: when the viewport is less than 768px wide */
 @media (max-width: 767px) {
   .responsive-scrollable {
-    max-height: 70vw;
+    max-height: 250px;
+    overflow-y: auto;
   }
 }
 
