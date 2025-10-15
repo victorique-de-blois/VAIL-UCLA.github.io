@@ -100,6 +100,33 @@
   link: "https://yukai-ma.github.io/"
   affiliation: "Zhejiang University"
 
+# Robot members #
+- name: "Coco Delivery Robot"
+  role: "Robot Member"
+  image: "../assets/team/coco_robot.jpg"
+  link: ""
+  affiliation: "UCLA"
+
+- name: "Booster T1"
+  role: "Robot Member"
+  image: "../assets/team/robot_man.jpg"
+  link: ""
+  affiliation: "UCLA"
+
+- name: "Unitree Go2"
+  role: "Robot Member"
+  image: "../assets/team/robot_dog.jpg"
+  link: ""
+  affiliation: "UCLA"
+
+- name: "Robot Chair"
+  role: "Robot Member"
+  image: "../assets/team/robot_chair.jpg"
+  link: ""
+  affiliation: "UCLA"
+
+
+
 # Alumni - PhD Students # 
 - name: "Qihang Zhang"
   role: "Alumni PhD Student"

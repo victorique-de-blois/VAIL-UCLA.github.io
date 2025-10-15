@@ -18,7 +18,8 @@ Click the buttons below to view our work by category.
     <button class="tag-btn" data-tag="Simulator">Simulator</button>
     <button class="tag-btn" data-tag="Autonomous Driving">Autonomous Driving</button>
     <button class="tag-btn" data-tag="Generative Model">Generative Model</button>
-        <button class="tag-btn" data-tag="Computer Vision">Computer Vision</button>
+    <button class="tag-btn" data-tag="Computer Vision">Computer Vision</button>
+    <button class="tag-btn" data-tag="Others">Others</button>
 
   </div>
 </div>
