@@ -8,16 +8,47 @@ description:
 carousel_autoplay_delay: 5000
 
 highlighted_projects:
+  - teaser_video: /assets/video/urbansim_demo.mp4
+    teaser_img: 
+    caption: 
+    title: "Towards Autonomous Micromobility through Scalable Urban Simulation"
+    link: https://metadriverse.github.io/urbansim/
+  - teaser_video: /assets/video/urbanverse_demo.mp4
+    teaser_img: 
+    caption: 
+    title: "UrbanVerse: Scaling Urban Simulation by Watching City-Tour Videos"
+    link: https://urbanverseproject.github.io/
+  - teaser_video: /assets/video/vid2sim_demo.mp4
+    teaser_img: 
+    caption: 
+    title: "Vid2Sim: Realistic and Interactive Simulation from Video for Urban Navigation"
+    link: https://metadriverse.github.io/vid2sim/
+  - teaser_video: /assets/video/dreamland_demo.mp4
+    teaser_img: 
+    caption: 
+    title: "Dreamland: Controllable World Creation with Simulator and Generative Models"
+    link: https://metadriverse.github.io/dreamland/
+  - teaser_video: /assets/video/s2e_demo.mp4
+    teaser_img: 
+    caption: 
+    title: "From Seeing to Experiencing: Scaling Navigation Foundation Models with Reinforcement Learning"
+    link: https://metadriverse.github.io/s2e/
+  - teaser_video: /assets/video/pedgen_demo.mp4
+    teaser_img: 
+    caption: 
+    title: "Learning to Generate Diverse Pedestrian Movements from Web Videos with Noisy Labels"
+    link: https://genforce.github.io/PedGen/
+  - teaser_video: /assets/video/ppl_demo.mp4
+    teaser_img: 
+    caption: 
+    title: "Predictive Preference Learning from Human Interventions"
+    link: https://metadriverse.github.io/ppl/
   - teaser_video: /assets/video/pvp4real_highlight_video.mp4
     teaser_img: 
     caption: 
     title: "PVP4Real: Mobile robots learned from human-in-the-loop interventions"
     link: https://metadriverse.github.io/pvp4real/
-  - teaser_video: /assets/video/scenarionet_highlight_video.mp4
-    teaser_img: 
-    caption: 
-    title: "ScenarioNet: Open-source platform for large-scale traffic scenario modeling and simulation"
-    link: https://metadriverse.github.io/scenarionet/
+    
 ---
 
 
