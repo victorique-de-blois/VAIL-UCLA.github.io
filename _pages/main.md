@@ -51,7 +51,43 @@ highlighted_projects:
     
 ---
 
+<style>
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .logo-container img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+  }
+  
+  .lab-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--global-text-color);
+    text-align: right;
+  }
+</style>
 
+<div class="header-container">
+  <div class="logo-container">
+    <img src="/assets/img/logo.png" alt="Logo 2">
+  </div>
+  <div class="lab-title">
+    Vision and Autonomy Intelligence Lab
+  </div>
+</div>
 
 <!-- ============================================ -->
 <div class="clearfix">
@@ -188,9 +224,6 @@ highlighted_projects:
   });
 </script>
 <!-- ============================================ -->
-
-
-
 
 
 <!-- ============================================ -->
