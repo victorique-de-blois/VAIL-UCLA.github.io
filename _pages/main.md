@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /
-title: Vision and Autonomy Intelligence Lab
+title: Lab
 description:
 
 # Video carousel auto-advance timing (in milliseconds)
