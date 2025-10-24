@@ -5,7 +5,7 @@ title: Lab
 description:
 
 # Video carousel auto-advance timing (in milliseconds)
-carousel_autoplay_delay: 4000
+carousel_autoplay_delay: 3500
 
 highlighted_projects:
   - teaser_video: /assets/video/urbansim_demo.mp4
@@ -191,7 +191,6 @@ highlighted_projects:
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <!-- Swiper Initialization -->
-<!-- Swiper Initialization -->
 <script>
   var swiper = new Swiper(".mySwiper", {
     spaceBetween: 30,
@@ -204,7 +203,7 @@ highlighted_projects:
       crossFade: true
     },
     autoplay: {
-      delay: {{ page.carousel_autoplay_delay | default: 4000 }},
+      delay: {{ page.carousel_autoplay_delay | default: 3500 }},
       disableOnInteraction: false,
       reverseDirection: false,
       stopOnLastSlide: false,
@@ -220,21 +219,24 @@ highlighted_projects:
       prevEl: ".swiper-button-prev",
     },
     on: {
-      slideChange: function () {
-        // Reset all videos to start
-        const videos = document.querySelectorAll('.swiper-slide video');
-        videos.forEach(video => {
-          video.currentTime = 0;
-          video.pause();
-        });
-        
-        // Play the current slide's video
+      slideChangeTransitionStart: function () {
+        // Play the next slide's video at the start of transition
         const activeSlide = this.slides[this.activeIndex];
         const activeVideo = activeSlide.querySelector('video');
         if (activeVideo) {
           activeVideo.currentTime = 0;
           activeVideo.play();
         }
+      },
+      slideChangeTransitionEnd: function () {
+        // Pause and reset non-active videos after transition completes
+        const videos = document.querySelectorAll('.swiper-slide video');
+        videos.forEach((video, index) => {
+          if (index !== this.activeIndex) {
+            video.pause();
+            video.currentTime = 0;
+          }
+        });
       },
       init: function () {
         // Play first video on init
@@ -247,12 +249,11 @@ highlighted_projects:
       reachEnd: function () {
         setTimeout(() => {
           this.slideTo(0);
-        }, {{ page.carousel_autoplay_delay | default: 4000 }});
+        }, {{ page.carousel_autoplay_delay | default: 3500 }});
       }
     }
   });
 </script>
-<!-- ============================================ -->
 
 
 <!-- ============================================ -->
