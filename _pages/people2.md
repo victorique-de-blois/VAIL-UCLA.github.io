@@ -29,11 +29,19 @@ _styles: >
         {% for member in group.items %}
           <li class="col-12 col-md-3 col-lg-3 mb-2">
                 <div class="cnt-block equal-hight" style="padding: 15px 10px; margin-bottom: 0;">
+                    {% if member.link and member.link != false and member.link != "" %}
                     <a href="{{ member.link }}" target="_blank">
                               <figure><img src="{{ member.image }}" class="img-responsive" alt="{{ member.name }}" /></figure>
                     </a>
+                    {% else %}
+                              <figure><img src="{{ member.image }}" class="img-responsive" alt="{{ member.name }}" /></figure>
+                    {% endif %}
                     <div style="text-align: center;">
+                        {% if member.link and member.link != false and member.link != "" %}
                         <h6><a href="{{ member.link }}" target="_blank" style="text-decoration: none;">{{ member.name }}</a></h6>
+                        {% else %}
+                        <h6 style="color: var(--global-text-color);">{{ member.name }}</h6>
+                        {% endif %}
                     </div>
                     {% unless member.affiliation == "UCLA" %}
                     <small>{{ member.affiliation }}</small>
@@ -59,27 +67,68 @@ _styles: >
     {% for alumni_group_name in alumni_array %}
       {% if alumni_group_name != '' %}
         {% for group in role_groups %}
-          {% if group.name == alumni_group_name %}
-            <h5 class="text-left mb-2" style="color: var(--global-text-color-light); font-size: 1.3em; margin-top: 1rem; margin-bottom: 0.5rem;">{{ group.name | replace: 'Alumni - ', '' }}</h5>
-            <div class="row" style="font-size: 1.1em; margin-bottom: 2rem;">
+                   {% if group.name == alumni_group_name %}
+          <h5 class="text-left mb-2" style="color: var(--global-text-color); font-size: 1em; font-weight: 400; margin-top: 1rem; margin-bottom: 0.5rem;">• {{ group.name | replace: 'Alumni - ', '' }}:</h5>
+            <ul style="list-style-type: none; padding-left: 1rem; margin-bottom: 1.5rem; line-height: 1.3;">
               {% for member in group.items %}
-                <div class="col-lg-2 col-md-3 col-sm-4 col-6 mb-4" style="flex: 0 0 20%; max-width: 20%;">
-                  <div style="padding: 0.4rem 0.6rem; background-color: var(--global-alumni-card-bg-color); border: 1px solid var(--global-divider-color); border-radius: 0.4rem; font-size: 1em; height: 100%; text-align: center;">
-                    <a href="{{ member.link }}" target="_blank" style="text-decoration: none; color: var(--global-alumni-text-color); font-weight: 500;">{{ member.name }}</a>
-                    {% if member.year %}
-                    <br><span style="color: var(--global-alumni-text-light); font-size: 0.8em; font-style: italic;">{{ member.year }}</span>
-                    {% endif %}
-                    {% unless member.affiliation == "UCLA" %}
-                    <br><span style="color: var(--global-alumni-text-light); font-size: 0.85em;">{{ member.affiliation }}</span>
-                    {% endunless %}
-                  </div>
-                </div>
+                <li style="margin-bottom: 0.1rem;">
+                  {% if member.link and member.link != false and member.link != "" %}
+                    <a href="{{ member.link }}" target="_blank" style="text-decoration: none;">{{ member.name }}</a>
+                  {% else %}
+                    {{ member.name }}
+                  {% endif %}
+                  {% if member.year %}
+                    ({{ member.year }}{% if member.affiliation and member.affiliation != "UCLA" %}, {% endif %}
+                  {% endif %}
+                  {% if member.affiliation and member.affiliation != "UCLA" %}
+                    {% unless member.year %}({% endunless %}{{ member.affiliation }})
+                  {% elsif member.year %}
+                    )
+                  {% endif %}
+                </li>
               {% endfor %}
-            </div>
+            </ul>
           {% endif %}
         {% endfor %}
       {% endif %}
     {% endfor %}
   {% endif %}
 </div>
+
+
+<!-- ============================================ -->
+<!-- Sponsors Section -->
+<h2>Sponsors</h2>
+<p>We are grateful for the generous research award and gift supports from the following sponsors:</p>
+
+<style>
+  .sponsors-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .sponsor-logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+  }
+</style>
+
+<div class="sponsors-container">
+  <img src="/assets/img/nsf_logo.svg"  class="sponsor-logo">
+  <img src="/assets/img/onr_logo.png"  class="sponsor-logo">
+  <img src="/assets/img/amazon.png"  class="sponsor-logo">
+  <img src="/assets/img/sony.jpeg"  class="sponsor-logo">
+  <img src="/assets/img/intel.png"  class="sponsor-logo">
+  <img src="/assets/img/samsung.jpeg"  class="sponsor-logo">
+  <img src="/assets/img/cisco.jpeg"  class="sponsor-logo">
+  <img src="/assets/img/coco_logo.png"  class="sponsor-logo">
+  <!-- Add more sponsor logos as needed -->
+</div>
+<!-- ============================================ -->
 </section>

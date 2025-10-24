@@ -5,7 +5,7 @@ title: Lab
 description:
 
 # Video carousel auto-advance timing (in milliseconds)
-carousel_autoplay_delay: 5000
+carousel_autoplay_delay: 4000
 
 highlighted_projects:
   - teaser_video: /assets/video/urbansim_demo.mp4
@@ -191,14 +191,20 @@ highlighted_projects:
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <!-- Swiper Initialization -->
+<!-- Swiper Initialization -->
 <script>
   var swiper = new Swiper(".mySwiper", {
     spaceBetween: 30,
     centeredSlides: true,
-    loop: false, // Disable loop to match pagination dots exactly
+    loop: false,
     watchSlidesProgress: true,
+    speed: 1000,
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
     autoplay: {
-      delay: {{ page.carousel_autoplay_delay | default: 2500 }},
+      delay: {{ page.carousel_autoplay_delay | default: 4000 }},
       disableOnInteraction: false,
       reverseDirection: false,
       stopOnLastSlide: false,
@@ -214,11 +220,34 @@ highlighted_projects:
       prevEl: ".swiper-button-prev",
     },
     on: {
+      slideChange: function () {
+        // Reset all videos to start
+        const videos = document.querySelectorAll('.swiper-slide video');
+        videos.forEach(video => {
+          video.currentTime = 0;
+          video.pause();
+        });
+        
+        // Play the current slide's video
+        const activeSlide = this.slides[this.activeIndex];
+        const activeVideo = activeSlide.querySelector('video');
+        if (activeVideo) {
+          activeVideo.currentTime = 0;
+          activeVideo.play();
+        }
+      },
+      init: function () {
+        // Play first video on init
+        const firstVideo = this.slides[0].querySelector('video');
+        if (firstVideo) {
+          firstVideo.currentTime = 0;
+          firstVideo.play();
+        }
+      },
       reachEnd: function () {
-        // When reaching the last slide, go back to first slide after delay
         setTimeout(() => {
           this.slideTo(0);
-        }, {{ page.carousel_autoplay_delay | default: 2500 }});
+        }, {{ page.carousel_autoplay_delay | default: 4000 }});
       }
     }
   });

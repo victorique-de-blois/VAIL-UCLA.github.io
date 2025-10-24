@@ -7,6 +7,19 @@ nav_order: 4
 description:  
 ---
 
+<style>
+  /* Make year headers more visible */
+  .publications h2.year,
+  .publications h2,
+  .publications h3.year,
+  .publications h3 {
+    color: var(--global-theme-color) !important;
+    font-weight: 600 !important;
+    font-size: 2.0rem !important;
+    margin-top: 0.0rem !important;
+    margin-bottom: 0.0rem !important;
+  }
+</style>
 
 Click the buttons below to view our work by category.
 <!-- Custom Tag Filter Buttons -->
@@ -14,11 +27,11 @@ Click the buttons below to view our work by category.
   <div class="tag-buttons">
     <button class="tag-btn active" data-tag="all">All</button>
     <!-- For now, we'll add common research area tags manually -->
-    <button class="tag-btn" data-tag="Robotics">Robotics</button>
-    <button class="tag-btn" data-tag="Simulator">Simulator</button>
-    <button class="tag-btn" data-tag="Autonomous Driving">Autonomous Driving</button>
-    <button class="tag-btn" data-tag="Generative Model">Generative Model</button>
     <button class="tag-btn" data-tag="Computer Vision">Computer Vision</button>
+    <button class="tag-btn" data-tag="Robotics">Robotics</button>
+    <button class="tag-btn" data-tag="Simulation">Simulation</button>
+    <button class="tag-btn" data-tag="Autonomy">Autonomy</button>
+    <button class="tag-btn" data-tag="Generative Models">Generative Models</button>
     <button class="tag-btn" data-tag="Others">Others</button>
 
   </div>
