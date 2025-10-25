@@ -104,7 +104,7 @@
   role: "Visiting Students"
   image: "../assets/team/yukaima.jpeg"
   link: "https://yukai-ma.github.io/"
-  affiliation: ""
+  affiliation: "UCLA"
 
 # Robot members #
 - name: "Coco Delivery Robot"
@@ -196,9 +196,9 @@
   year: "2022"
   affiliation: "Previous Master student at UCLA"
 
-- name: "Sun Hao"
+- name: "Hao Sun"
   role: "Alumni - Graduated Master's Students"
-  link: "https://sunhao101.github.io/"
+  link: "https://holarissun.github.io/"
   year: "2019-2022"
   affiliation: "PhD Student at Cambridge"
 
