@@ -16,8 +16,8 @@ $ docker compose up
 
 * Update News: [_news/](_news/)
     * For awards, please follow the format *XXX (with personal link) won XXXXX price*.
-    * For paper acceptance, please follow the format *AA, BB, and CC were accepted to XXXX*.
-    * For workshop, please follow the format *We organized YYYYY workshop at XXXXX*.
+    * For paper acceptance, please follow the format *AA, BB, and CC (with paper link) were accepted to XXXX*.
+    * For workshop, please follow the format *We organized YYYYY workshop (with workshop link) at XXXXX*.
 
 
 
