@@ -6,7 +6,6 @@ nav: true
 nav_order: 4
 description:  
 ---
-
 <style>
   /* Make year headers more visible */
   .publications h2.year,
@@ -18,10 +17,21 @@ description:
     font-size: 2.0rem !important;
     margin-top: 0.0rem !important;
     margin-bottom: 0.0rem !important;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Style for "Before UCLA" badge - matches year format */
+  .year-badge {
+    color: var(--global-theme-color) !important;
+    font-weight: 600 !important;
+    font-size: 2.0rem !important;
   }
 </style>
 
-Click the buttons below to view our work by category.
+Click the buttons below to view our work by category. Please see [Google Scholar](https://scholar.google.com/citations?hl=en&user=9D4aG8AAAAAJ&view_op=list_works&sortby=pubdate) for more recent works and arXiv papers.
 <!-- Custom Tag Filter Buttons -->
 <div class="publication-tags-container mb-4">
   <div class="tag-buttons">
@@ -47,6 +57,28 @@ Click the buttons below to view our work by category.
 document.addEventListener('DOMContentLoaded', function() {
   const tagButtons = document.querySelectorAll('.tag-btn');
   const publications = document.querySelectorAll('.publications ol.bibliography li');
+
+  // Add "Before UCLA" badge only to year 2022
+  const yearSections = document.querySelectorAll('.publications h2, .publications h3, .publications .year');
+  yearSections.forEach(yearSection => {
+    const yearText = yearSection.textContent.trim();
+    const yearMatch = yearText.match(/\b(19|20)\d{2}\b/);
+    
+    if (yearMatch) {
+      const year = parseInt(yearMatch[0]);
+      if (year === 2022) {
+        // Add badge if it doesn't already exist
+        if (!yearSection.querySelector('.year-badge')) {
+          const badge = document.createElement('span');
+          badge.className = 'year-badge';
+          badge.textContent = 'Before UCLA';
+          yearSection.style.position = 'relative';
+          yearSection.classList.add('has-badge');
+          yearSection.insertBefore(badge, yearSection.firstChild);
+        }
+      }
+    }
+  });
 
   tagButtons.forEach(button => {
     button.addEventListener('click', function() {
